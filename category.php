@@ -14,7 +14,6 @@ function mg_custom_loop() {
 			
 			if ( $query->have_posts() ) :
 			$count = 0; // Set up counter variable ?>
-	<div class="custom-loop-wrap">
 			<?php while ($query -> have_posts()) : $query -> the_post(); 
 			$count++; // Increment the variable by 1 each time the loop executes
 			if( $count<2 ) { // Select firt post ?> 
@@ -37,7 +36,8 @@ function mg_custom_loop() {
 		</div>
 	</article>
 </div> 
-<?php } else { // Rest of the posts ?> 
+<div class="category-grid">
+<?php } else {?>
 				<article id="post-<?php the_ID(); ?>" class="grid-item">
 		<div class="featured-image">
 			<?php if ( has_post_thumbnail() ) { ?>
@@ -53,10 +53,9 @@ function mg_custom_loop() {
 		<div class="summary">
 			<a href="<?php the_permalink(); ?>"><h4><?php the_title(); ?></h4></a>
 		</div>
-	</article>
-			<?php  }
-	
-	endwhile; ?>
+		</article> 
+
+	<?php } endwhile; ?>
 	</div>
 <?php endif;
 	
